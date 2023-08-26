@@ -1,0 +1,97 @@
+.parentcomponent {
+    background-color: #000;
+    position: relative;
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: 1fr auto;
+    grid-gap: 8px;
+    .sidebar {
+        display: flex;
+        flex-direction: column;
+        width: 22vw;
+        gap: 2vh;
+        color: white;
+        .icon {
+            padding-top: 10px;
+            font-size: 25px;
+            font-family: "Poppins", sans-serif;
+        }
+        .icon svg {
+            height: 25px;
+            width: auto;
+        }
+        .icon span {
+            display: inline-block;
+            position: relative;
+            bottom: 4px;
+            margin-left: 25px;
+        }
+
+        .menu {
+            background-color: #121212;
+            padding: 7px 5px;
+        }
+        .search {
+            color: #b3b3b3;
+        }
+        .menu ul {
+            list-style-type: none;
+            padding: 0px 10px;
+        }
+        .menu li {
+            padding-top: 6px;
+        }
+        .menu ul :hover {
+            color: white;
+            cursor: pointer;
+        }
+        .library {
+            background-color: #121212;
+            padding: 7px 5px;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            .mylibrary {
+                display: flex;
+                justify-content: space-between;
+                padding: 9px 10px;
+                .icon {
+                    padding-top: 10px;
+                    font-size: 25px;
+                    font-family: "Poppins", sans-serif;
+                }
+                .search {
+                    color: #b3b3b3;
+                }
+                .search :hover {
+                    color: white;
+                    cursor: pointer;
+                }
+                .addplaylist
+                {
+                    cursor: pointer;
+                }
+                app-tooltip-comp{
+                    z-index: 999;
+                }
+            }
+            .createplaylist{
+                .addplaylist{
+                    height: 100px;
+                }
+                display: flex;
+                flex-direction: column;
+                padding: 22px 10px;
+                font-family: "Poppins", sans-serif;
+                background-color: #242424;
+                .heading{
+                    font-size: 18px;
+                    font-weight: 600;
+                }
+
+            }
+        }
+    }
+}
