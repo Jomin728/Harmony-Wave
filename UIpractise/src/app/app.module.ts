@@ -10,6 +10,7 @@ import { TagComponent } from './tag/tag.component';
 import { ButtontagComponent } from './buttontag/buttontag.component';
 import { HttpClientModule } from '@angular/common/http';
 import { PlaylistComponent } from './playlist/playlist.component';
+import { AudioplayerComponent } from './audioplayer/audioplayer.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { PlaylistComponent } from './playlist/playlist.component';
     TooltipCompComponent,
     TagComponent,
     ButtontagComponent,
-    PlaylistComponent
+    PlaylistComponent,
+    AudioplayerComponent
   ],
   imports: [
     BrowserModule,

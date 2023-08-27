@@ -48,6 +48,7 @@
             cursor: pointer;
         }
         .library {
+            height: 100%;
             background-color: #121212;
             padding: 7px 5px;
             display: flex;
@@ -91,6 +92,16 @@
                     font-weight: 600;
                 }
 
+            }
+            .listplaylist{
+                display: flex;
+                flex-direction: column;
+                padding: 22px 10px;
+                font-family: "Poppins", sans-serif;
+                .heading{
+                    font-size: 18px;
+                    font-weight: 600;
+                }
             }
         }
     }

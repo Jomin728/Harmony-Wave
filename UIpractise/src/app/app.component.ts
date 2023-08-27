@@ -11,10 +11,11 @@ export class AppComponent implements OnInit{
   ) { }
 
   ngOnInit(): void {
-    // this.initalization()
+    this.initalization()
   }
 
   public playListCreated=false
+  public lists:any=[]
 
 
   initalization()
@@ -23,10 +24,16 @@ export class AppComponent implements OnInit{
     console.log(data)
     if(data['collection'].length!=0)
     {
+      this.lists=[...data.collection]
       this.playListCreated=true
-      this.getPlayListService.getplayListTracks(data['collection'][0]['playlist']['id']).subscribe((response:any)=>{
-        console.log(response)
-      })
+      data.collection.forEach((element:any,index:any) => {
+        this.getPlayListService.getplayListTracks(element['playlist']['id']).subscribe((response:any)=>{
+          console.log(response)
+          this.lists[index]['imageUrl']=response['tracks'][0]['artwork_url']
+          console.log(this.lists)
+
+        })
+      });
     }
 
    })

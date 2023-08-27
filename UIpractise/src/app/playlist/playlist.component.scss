@@ -1,0 +1,19 @@
+.list{
+    display: flex;
+    img{
+        height: 63px;
+        width: auto;
+    }
+    div{
+        padding-left: 15px;
+    }
+    p{
+        padding-top: 6px;
+
+    }
+}
+.list:hover{
+    background-color: #242424;
+    cursor: pointer;
+
+}

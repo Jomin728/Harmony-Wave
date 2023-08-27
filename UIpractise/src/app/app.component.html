@@ -49,30 +49,44 @@
                                 fill="#f5f5f5"></path>
                         </g>
                     </svg>
-                    <span>My Library</span>
+                    <span>Your Library</span>
                 </div>
-                
+
                 <div class="addplaylist icon">
-                    <svg appCustomtooltip [tooltip]="'Create PlayList or Folder'" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M4 12H20M12 4V20" stroke="#fdf7f7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+                    <svg appCustomtooltip [tooltip]="'Create PlayList or Folder'" viewBox="0 0 24 24" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <path d="M4 12H20M12 4V20" stroke="#fdf7f7" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round"></path>
+                        </g>
+                    </svg>
                 </div>
 
             </div>
-            <div class="mylibrary">
-               <app-tag [text]="'Playlists'"></app-tag>
+            <div class="mylibrary" *ngIf="playListCreated == true">
+                <app-tag [text]="'Playlists'"></app-tag>
             </div>
             <div class="createplaylist" *ngIf="playListCreated == false">
-            <div class="addplaylist">
-              <div>
-                <p class="heading"> Create your first playlist</p>
-                <p>It's easy, we'll help you</p>
+                <div class="addplaylist">
+                    <div>
+                        <p class="heading"> Create your first playlist</p>
+                        <p>It's easy, we'll help you</p>
 
-              </div>
-              <div>
-                <app-buttontag [text]="'Create playlist'"></app-buttontag>
-              </div>
+                    </div>
+                    <div>
+                        <app-buttontag [text]="'Create playlist'"></app-buttontag>
+                    </div>
+                </div>
             </div>
+            <div class="listplaylist" >
+                <ng-container  *ngFor="let item of lists">
+                    <app-playlist  [title]="item['playlist']['title']" [imageUrl]="item['imageUrl']" ></app-playlist>
+                </ng-container>
             </div>
         </div>
     </div>
     <div class="childcomponent"></div>
 </div>
+<app-audioplayer></app-audioplayer>
