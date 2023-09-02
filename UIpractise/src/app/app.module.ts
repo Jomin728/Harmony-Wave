@@ -11,6 +11,9 @@ import { ButtontagComponent } from './buttontag/buttontag.component';
 import { HttpClientModule } from '@angular/common/http';
 import { PlaylistComponent } from './playlist/playlist.component';
 import { AudioplayerComponent } from './audioplayer/audioplayer.component';
+import { HomeComponent } from './home/home.component';
+import { ErrorComponent } from './error/error.component';
+import { SliderComponent } from './slider/slider.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +23,10 @@ import { AudioplayerComponent } from './audioplayer/audioplayer.component';
     TagComponent,
     ButtontagComponent,
     PlaylistComponent,
-    AudioplayerComponent
+    AudioplayerComponent,
+    HomeComponent,
+    ErrorComponent,
+    SliderComponent
   ],
   imports: [
     BrowserModule,

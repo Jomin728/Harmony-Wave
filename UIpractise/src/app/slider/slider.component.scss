@@ -1,0 +1,73 @@
+.slide{
+    
+    .header{
+        font-family: 'Poppins',sans-serif;
+        font-weight: 400;
+        font-size: 1.5rem;
+        padding: 1rem 1rem;
+    }
+    .scroller
+    {
+        position: relative;
+    }
+    .scrollbar{
+        display: flex;
+        position: absolute;
+        width: 99%;
+        overflow: hidden;
+        gap:1.5rem;
+        font-family: 'Poppins',sans-serif;
+
+
+    }
+    .right{
+        position: absolute;
+        top: 50%;
+        right: 1%;
+        z-index: 9999;
+        width: 1.5rem;
+        z-index: 9999;
+        background: black;
+    
+    svg{
+        size: 2rem;
+    }
+
+    }
+    .left{
+        position: absolute;
+        top: 50%;
+        left: 0%;
+        width: 1.5rem;
+        z-index: 9999;
+        background: black;
+            svg{
+            size: 2rem;
+        }
+    }
+    .cards{
+        padding: 16px;
+        background-color: #181818;
+        .titlep{
+            padding-top: 1rem;
+            font-weight: 400;
+            font-size: 1.2rem;
+        }
+        .desp{
+            font-weight: 200;
+            font-size: 0.8rem;
+        }
+    }
+    .cards:hover{
+        background-color: #242424;
+        cursor: pointer;
+    
+    }
+    .card{
+        display: flex;
+        flex-direction: column;
+        img{
+            height: 10rem;
+        }
+    }
+}

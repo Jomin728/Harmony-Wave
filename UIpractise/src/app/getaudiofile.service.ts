@@ -50,7 +50,7 @@ export class GetaudiofileService {
     const headers = new HttpHeaders()
     .set('Content-Type', 'application/json')
     .set('Authorization','OAuth 2-294140-1293559353-qmfH32EKPE1yQ')
-    .set('name','https://api-v2.soundcloud.com/tracks/'+314656017+'?app_locale=en');
+    .set('name','https://api-v2.soundcloud.com/tracks/'+155648317+'?app_locale=en');
 
    return this.http.get("http://localhost:3000",{'params':params,'headers': headers})
 
@@ -101,7 +101,6 @@ export class GetaudiofileService {
   sound(volume:any)
   {
     this.audioObj.volume = volume
-    debugger
   }
 
   seekTo(seconds:any) {
@@ -110,7 +109,6 @@ export class GetaudiofileService {
    startStream(url:any):any
    {
     return new Observable(observer =>{
-      debugger
       this.audioObj.src = url
       this.audioObj.load();
       // this.audioObj.play()
