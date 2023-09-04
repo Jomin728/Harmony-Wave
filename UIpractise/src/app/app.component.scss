@@ -8,6 +8,7 @@
     grid-template-rows: 1fr auto;
     grid-gap: 8px;
     .sidebar {
+        overflow-y: hidden;
         display: flex;
         flex-direction: column;
         width: 22vw;
@@ -104,5 +105,8 @@
                 }
             }
         }
+    }
+    .childcomponent{
+        overflow-y: scroll;
     }
 }

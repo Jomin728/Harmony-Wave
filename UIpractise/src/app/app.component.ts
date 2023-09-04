@@ -1,5 +1,6 @@
 import { Component, OnInit,Optional } from '@angular/core';
 import { MyplaylistsService } from './myplaylists.service';
+import { MessengerService } from './messenger.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -8,6 +9,7 @@ import { MyplaylistsService } from './myplaylists.service';
 export class AppComponent implements OnInit{
   title = 'UIpractise';
   constructor( @Optional() private getPlayListService: MyplaylistsService,
+  private getmesseage:MessengerService
   ) { }
 
   ngOnInit(): void {

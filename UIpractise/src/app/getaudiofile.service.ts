@@ -50,7 +50,41 @@ export class GetaudiofileService {
     const headers = new HttpHeaders()
     .set('Content-Type', 'application/json')
     .set('Authorization','OAuth 2-294140-1293559353-qmfH32EKPE1yQ')
-    .set('name','https://api-v2.soundcloud.com/tracks/'+155648317+'?app_locale=en');
+    .set('name','https://api-v2.soundcloud.com/tracks/'+num+'?app_locale=en');
+
+   return this.http.get("http://localhost:3000",{'params':params,'headers': headers})
+
+   }
+   getplaylist(id:any)
+   {
+    const params = new HttpParams()
+    .set('representation','full')
+    .set('client_id','iMxZgT5mfGstBj8GWJbYMvpzelS8ne0E')
+    .set('app_version','1693487844')
+    .set('app_locale','en')
+
+
+    const headers = new HttpHeaders()
+    .set('Content-Type', 'application/json')
+    .set('name','https://api-v2.soundcloud.com/playlists/'+id+'?representation=full&client_id=iMxZgT5mfGstBj8GWJbYMvpzelS8ne0E&app_version=1693487844&app_locale=en');
+
+   return this.http.get("http://localhost:3000",{'params':params,'headers': headers})
+   }
+   getHistory()
+   {
+    const params = new HttpParams()
+    .set('client_id','iMxZgT5mfGstBj8GWJbYMvpzelS8ne0E')
+    .set('limit','25')
+    .set('offset','0')
+    .set('linked_partitioning','1')
+    .set('app_version','1693487844')
+    .set('app_locale','en')
+
+
+    const headers = new HttpHeaders()
+    .set('Content-Type', 'application/json')
+    .set('Authorization','OAuth 2-294140-1293559353-qmfH32EKPE1yQ')
+    .set('name','https://api-v2.soundcloud.com/me/play-history/tracks?client_id=iMxZgT5mfGstBj8GWJbYMvpzelS8ne0E&limit=25&offset=0&linked_partitioning=1&app_version=1693487844&app_locale=en');
 
    return this.http.get("http://localhost:3000",{'params':params,'headers': headers})
 

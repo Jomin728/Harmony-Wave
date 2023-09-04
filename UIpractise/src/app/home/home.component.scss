@@ -1,5 +1,8 @@
 .homecomponent{
     color: white;
+    overflow-y: scroll;
+    background-color: #000;
+
     .header{
         padding: 0 1%;
         background:linear-gradient(to bottom,#767a76 ,#616662 ) ;
@@ -40,6 +43,10 @@
     {
         opacity: 1;
         cursor: pointer;
+    }
+    .playlists
+    {
+      
     }
 
     .img{

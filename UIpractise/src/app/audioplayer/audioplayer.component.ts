@@ -2,6 +2,7 @@ import { Component, ElementRef, OnInit ,Optional, ViewChild} from '@angular/core
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { GetaudiofileService } from '../getaudiofile.service';
+import { MessengerService } from '../messenger.service';
 
 @Component({
   selector: 'app-audioplayer',
@@ -20,11 +21,31 @@ export class AudioplayerComponent implements OnInit {
  public soundposition =50
  public duration=''
  public currenttime=''
+ public tracks = [];
+ public autoplay=false
+
  @ViewChild('range',{static:false}) range:ElementRef<HTMLElement>
  @ViewChild('thumb',{static:false}) thumb:ElementRef<HTMLElement>
 
+ public reset()
+ {
+  this.username=""
+  this.position ='0px';
+  this.percentage =0;
+  this.marginLeft = 0
+  this.centerProgressBar ="0%";
+  this.pause =false
+  this.soundposition =50
+  this.duration=''
+  this.currenttime=''
+ }
+
+ public playlist:Observable<any>
+
   constructor(public http:HttpClient,
     @Optional() private gettrackService: GetaudiofileService,
+    private getmesseage:MessengerService
+
     ) { }
 public onchange(e:any)
 {
@@ -46,8 +67,51 @@ public changeProgressbar()
 }
   ngOnInit(): void {
 
+    this.playlist=this.getmesseage.playlistObs
+    this.playlist.subscribe((response:any)=>{
+      console.log('jomin',response)
+      if(response['event']=='play')
+      {
+        this.gettrackService.stop();
+        this.reset()
+        if(response['kind']=="system-playlist")
+        {
+          this.tracks=response['tracks']
+          this.playTrack(this.tracks[0]['id'])
 
-    this.gettrackService.gettrack().subscribe((response:any)=>{
+        }
+        else if(response['kind']=="playlist")
+        {
+           this.gettrackService.getplaylist(response['id']).subscribe((data:any)=>{
+            this.tracks=data['tracks']
+            this.playTrack(this.tracks[0]['id'])
+
+           })
+        }
+
+        // this.gettrackService.playStream()
+      }
+    })
+  this.playTrack('155648317')
+    this.gettrackService.stateChange.subscribe((data)=>{
+      console.log(data)
+      this.pause=this.gettrackService.state.playing
+      this.duration=this.gettrackService.state.readableDuration
+      this.currenttime=this.gettrackService.state.readableCurrentTime
+      if(data.event == 'timeupdate')
+      {
+      this.percentage=((this.gettrackService.state.currentTime)/this.gettrackService.state.duration) * 100
+      this.changeProgressbar()
+      }
+      if(data.event=='canplay' && this.autoplay )
+      {
+        this.gettrackService.play()
+      }
+    })
+  }
+  public playTrack(id?:any)
+  {
+    this.gettrackService.gettrack(id).subscribe((response:any)=>{
       console.log(response)
       this.imageUrl=response['artwork_url']
       this.title=response['title']
@@ -59,17 +123,6 @@ public changeProgressbar()
          })
       })
     })
-    this.gettrackService.stateChange.subscribe((data)=>{
-      console.log(data)
-      this.pause=this.gettrackService.state.playing
-      this.duration=this.gettrackService.state.readableDuration
-      this.currenttime=this.gettrackService.state.readableCurrentTime
-      if(data.event == 'timeupdate')
-      {
-      this.percentage=((this.gettrackService.state.currentTime)/this.gettrackService.state.duration) * 100
-      this.changeProgressbar()
-      }
-    })
   }
  public onsoundchange(e:any)
  {
@@ -78,6 +131,7 @@ public changeProgressbar()
  }
   public play()
   {
+    this.autoplay=true
     this.gettrackService.play()
   }
   public pauseplay()

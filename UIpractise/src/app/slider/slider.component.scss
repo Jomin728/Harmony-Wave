@@ -1,10 +1,12 @@
 .slide{
-    
+    display: block;
+
     .header{
         font-family: 'Poppins',sans-serif;
         font-weight: 400;
         font-size: 1.5rem;
         padding: 1rem 1rem;
+        display: block;
     }
     .scroller
     {
@@ -12,7 +14,6 @@
     }
     .scrollbar{
         display: flex;
-        position: absolute;
         width: 99%;
         overflow: hidden;
         gap:1.5rem;
@@ -20,14 +21,19 @@
 
 
     }
+    .jomin{
+        display: inline-flex;
+        position: relative;
+    }
     .right{
         position: absolute;
         top: 50%;
-        right: 1%;
+        right: 0%;
         z-index: 9999;
         width: 1.5rem;
         z-index: 9999;
         background: black;
+        cursor: pointer;
     
     svg{
         size: 2rem;
@@ -44,10 +50,14 @@
             svg{
             size: 2rem;
         }
+        cursor: pointer;
     }
     .cards{
         padding: 16px;
         background-color: #181818;
+        width: 12rem;
+        position: relative;
+
         .titlep{
             padding-top: 1rem;
             font-weight: 400;
@@ -61,11 +71,21 @@
     .cards:hover{
         background-color: #242424;
         cursor: pointer;
+        svg{
+            opacity: 1;
+        }
     
     }
     .card{
         display: flex;
         flex-direction: column;
+        svg{
+            position: absolute;
+    height: 3rem;
+    right: 11%;
+    bottom: 50%;
+    opacity: 0;
+        }
         img{
             height: 10rem;
         }
