@@ -89,6 +89,48 @@ export class GetaudiofileService {
    return this.http.get("http://localhost:3000",{'params':params,'headers': headers})
 
    }
+   getRelatedTracks(id:any)
+   {
+    const params = new HttpParams()
+    .set('user_id','1293559353')
+    .set('client_id','iMxZgT5mfGstBj8GWJbYMvpzelS8ne0E')
+    .set('limit','50')
+    .set('offset','0')
+    .set('linked_partitioning','1')
+    .set('app_version','1693487844')
+    .set('app_locale','en')
+
+
+    const headers = new HttpHeaders()
+    .set('Content-Type', 'application/json')
+    .set('name','https://api-v2.soundcloud.com/tracks/'+id+'/related?user_id=1293559353&client_id=iMxZgT5mfGstBj8GWJbYMvpzelS8ne0E&limit=50&offset=0&linked_partitioning=1&app_version=1693487844&app_locale=en');
+
+   return this.http.get("http://localhost:3000",{'params':params,'headers': headers})
+
+   }
+   searchQuery(value:any)
+   {
+    const params = new HttpParams()
+    .set('q',value)
+    .set('sc_a_id','1b6c568849aee08069da9052bf9c38c5a639b68a')
+    .set('variant_ids','2613')
+    .set('facet','model')
+    .set('user_id','98935-469044-563047-744277')
+    .set('client_id','iMxZgT5mfGstBj8GWJbYMvpzelS8ne0E')
+    .set('limit','20')
+    .set('offset','0')
+    .set('linked_partitioning','1')
+    .set('app_version','1693487844')
+    .set('app_locale','en')
+
+
+    const headers = new HttpHeaders()
+    .set('Content-Type', 'application/json')
+    .set('name','https://api-v2.soundcloud.com/search?q='+value+'&sc_a_id=1b6c568849aee08069da9052bf9c38c5a639b68a&variant_ids=2613&facet=model&user_id=98935-469044-563047-744277&client_id=iMxZgT5mfGstBj8GWJbYMvpzelS8ne0E&limit=20&offset=0&linked_partitioning=1&app_version=1');
+
+   return this.http.get("http://localhost:3000",{'params':params,'headers': headers})
+
+   }
    gethls(id:string,url:string)
    {
     const params = new HttpParams()

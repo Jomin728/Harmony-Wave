@@ -3,6 +3,7 @@
     overflow-y: scroll;
     background-color: #000;
 
+
     .header{
         padding: 0 1%;
         background:linear-gradient(to bottom,#767a76 ,#616662 ) ;
@@ -78,4 +79,9 @@ height: 6.5rem;        }
         transition: opacity 1.5s
     } 
 
+}
+.footer
+{
+    display: block;
+    height: 20%;
 }

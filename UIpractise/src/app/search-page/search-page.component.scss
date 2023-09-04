@@ -1,0 +1,122 @@
+.searchPage{
+    color: white;
+    overflow-y: scroll;
+    background-color: #000;
+    .searchBar{
+        padding: 2% 5%;
+        .search{
+            width: fit-content;
+    display: flex;
+    padding: 1% 1%;
+    border: solid 1px white;
+    background-color: #242424;
+    border-radius: 6rem;
+        }
+        svg{
+            height: 2rem;
+        }
+        input{
+            color: white;
+            height: 2rem;
+            width: 26rem;  
+            background-color: transparent;      
+            border: transparent;
+            font-family: 'Poppins',sans-serif;
+            font-size:1rem ;
+            font-weight: 400;
+    
+        }
+        input:focus{
+            outline: none;
+        }
+    }
+    .noSearch{
+        height: 60%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-family: 'Poppins',sans-serif;
+        font-size:1rem ;
+        font-weight: 400;
+        opacity: 0.5;
+
+
+    }
+    .slide{
+        display: block;
+    
+        .header{
+            font-family: 'Poppins',sans-serif;
+            font-weight: 400;
+            font-size: 1.5rem;
+            padding: 1rem 1rem;
+            display: block;
+        }
+        .scroller
+        {
+            position: relative;
+        }
+        .scrollbar{
+            display: flex;
+            width: 99%;
+            overflow: hidden;
+            gap:1.5rem;
+            font-family: 'Poppins',sans-serif;
+    
+    
+        }
+        .jomin{
+            display: inline-flex;
+            position: relative;
+            flex-wrap: wrap;
+
+        }
+        .cards{
+            padding: 16px;
+            background-color: #181818;
+            width: 12rem;
+            position: relative;
+    
+            .titlep{
+                padding-top: 1rem;
+                font-weight: 400;
+                font-size: 1.2rem;
+            }
+            .desp{
+                font-weight: 200;
+                font-size: 0.8rem;
+            }
+        }
+        .cards:hover{
+            background-color: #242424;
+            cursor: pointer;
+            svg{
+                opacity: 1;
+            }
+        
+        }
+        .card{
+            display: flex;
+            flex-direction: column;
+            svg{
+                position: absolute;
+        height: 3rem;
+        right: 11%;
+        bottom: 50%;
+        opacity: 0;
+            }
+            img{
+                height: 10rem;
+            }
+        }
+    }
+
+
+    
+
+}
+.footer
+{
+    display: block;
+    height: 10%;
+}

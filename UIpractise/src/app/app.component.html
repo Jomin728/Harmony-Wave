@@ -3,7 +3,7 @@
         <div class="menu">
             <nav>
                 <ul>
-                    <li class="icon"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100"
+                <a [routerLink]="['home']" ><li class="icon"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100"
                             viewBox="0,0,256,256">
                             <g fill="#f6f3f2" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
                                 stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
@@ -16,8 +16,9 @@
                                 </g>
                             </g>
                         </svg><span>Home</span>
-                    </li>
-                    <li class="icon search"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100"
+                    </li> </a>
+                   <a [routerLink]="['search']"><li
+                     class="icon search"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100"
                             height="100" viewBox="0,0,256,256">
                             <g fill="#f6f3f2" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
                                 stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
@@ -30,7 +31,7 @@
                                 </g>
                             </g>
                         </svg><span>Search</span>
-                    </li>
+                    </li></a>
                 </ul>
             </nav>
         </div>

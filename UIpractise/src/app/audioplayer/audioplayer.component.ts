@@ -21,8 +21,9 @@ export class AudioplayerComponent implements OnInit {
  public soundposition =50
  public duration=''
  public currenttime=''
- public tracks = [];
+ public tracks=<any>[];
  public autoplay=false
+ public currentSong=0;
 
  @ViewChild('range',{static:false}) range:ElementRef<HTMLElement>
  @ViewChild('thumb',{static:false}) thumb:ElementRef<HTMLElement>
@@ -72,27 +73,49 @@ public changeProgressbar()
       console.log('jomin',response)
       if(response['event']=='play')
       {
+        
+        this.tracks=this.tracks.slice(0,(this.currentSong+1))
         this.gettrackService.stop();
         this.reset()
         if(response['kind']=="system-playlist")
         {
-          this.tracks=response['tracks']
-          this.playTrack(this.tracks[0]['id'])
+          response['tracks'].forEach((element:any)=>{
+            this.tracks.push(element)
+          })
+          this.currentSong++;
+          this.playTrack(this.tracks[this.currentSong]['id'])
 
         }
         else if(response['kind']=="playlist")
         {
            this.gettrackService.getplaylist(response['id']).subscribe((data:any)=>{
-            this.tracks=data['tracks']
-            this.playTrack(this.tracks[0]['id'])
+            data['tracks'].forEach((element:any)=>{
+              this.tracks.push(element)
+            })
+            this.currentSong++;
+            this.playTrack(this.tracks[this.currentSong]['id'])
 
            })
+        }
+        else if(response['kind']=='track')
+        {
+          this.tracks.push(response)
+          this.currentSong++;
+          this.playTrack(this.tracks[this.currentSong]['id'])
         }
 
         // this.gettrackService.playStream()
       }
     })
-  this.playTrack('155648317')
+  this.gettrackService.getHistory().subscribe((response:any)=>{
+    response['collection'].slice().reverse().forEach((data:any)=>{
+         this.tracks.push(data['track'])
+      })
+      this.currentSong=response['collection'].length-1
+      this.playTrack(this.tracks[this.currentSong]['id'])
+
+      
+  })
     this.gettrackService.stateChange.subscribe((data)=>{
       console.log(data)
       this.pause=this.gettrackService.state.playing
@@ -107,6 +130,8 @@ public changeProgressbar()
       {
         this.gettrackService.play()
       }
+       else if(data.event=='canplay')
+       this.autoplay=true
     })
   }
   public playTrack(id?:any)
@@ -133,6 +158,39 @@ public changeProgressbar()
   {
     this.autoplay=true
     this.gettrackService.play()
+  }
+  public nextTrack()
+  {
+    if(this.currentSong==this.tracks.length-1)
+    {
+      this.gettrackService.getRelatedTracks(this.tracks[this.currentSong]['id']).subscribe((response:any)=>{
+        response['collection'].forEach((element:any)=>{
+          this.tracks.push(element)    
+        })
+        this.gettrackService.stop();
+        this.reset()
+        this.currentSong++;
+        this.playTrack(this.tracks[this.currentSong]['id'])
+
+
+      })
+    }
+    else{
+      this.gettrackService.stop();
+      this.reset()
+      this.currentSong++;
+      this.playTrack(this.tracks[this.currentSong]['id'])
+  
+    }
+
+  }
+  public prevTrack()
+  {
+    this.gettrackService.stop();
+    this.reset()
+    this.currentSong--;
+    this.playTrack(this.tracks[this.currentSong]['id'])
+
   }
   public pauseplay()
   {

@@ -9,6 +9,8 @@
     opacity: 1;
     padding-top: 8px;
     justify-content: space-between;
+    height: 10vh;
+    z-index: 99999;
     .songtitle{
         display: flex;
         flex-direction: row;

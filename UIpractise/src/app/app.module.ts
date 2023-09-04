@@ -14,6 +14,7 @@ import { AudioplayerComponent } from './audioplayer/audioplayer.component';
 import { HomeComponent } from './home/home.component';
 import { ErrorComponent } from './error/error.component';
 import { SliderComponent } from './slider/slider.component';
+import { SearchPageComponent } from './search-page/search-page.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { SliderComponent } from './slider/slider.component';
     AudioplayerComponent,
     HomeComponent,
     ErrorComponent,
-    SliderComponent
+    SliderComponent,
+    SearchPageComponent
   ],
   imports: [
     BrowserModule,

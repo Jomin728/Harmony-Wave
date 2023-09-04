@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GethomepagetracksService } from '../gethomepagetracks.service';
+import { MessengerService } from '../messenger.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -9,7 +10,9 @@ export class HomeComponent implements OnInit {
 public list =['one','two','three','four','five','six']
 public listone=[]
 public collection=[]
-  constructor(public gethomepagetracksService:GethomepagetracksService) { }
+  constructor(public gethomepagetracksService:GethomepagetracksService,
+    private getmesseage:MessengerService
+    ) { }
 
   ngOnInit(): void {
     this.gethomepagetracksService.getMixedSelections().subscribe((response:any)=>{
@@ -27,6 +30,10 @@ public collection=[]
       
       
     })
+  }
+  public play(item:any)
+  {
+    this.getmesseage.selectPlaylist(item,'play')
   }
 
 }
