@@ -40,7 +40,7 @@ export class SearchPageComponent implements OnInit {
       })
     ).subscribe((response:any)=>{
       this.reset()
-      console.log('Jesus is Lord',response)
+      console.log(response)
       this.playlists=response['collection'].filter((value:any)=>{
         return value['kind']=='playlist'
       })
@@ -64,6 +64,10 @@ export class SearchPageComponent implements OnInit {
   public play(item:any)
   {
     this.getmesseage.selectPlaylist(item,'play')
+  }
+  public openPlaylist(item:any)
+  {
+     
   }
 
 }

@@ -15,6 +15,10 @@ import { HomeComponent } from './home/home.component';
 import { ErrorComponent } from './error/error.component';
 import { SliderComponent } from './slider/slider.component';
 import { SearchPageComponent } from './search-page/search-page.component';
+import { PlaylistpageComponent } from './playlistpage/playlistpage.component';
+import { AddplaylistComponent } from './addplaylist/addplaylist.component';
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -28,13 +32,17 @@ import { SearchPageComponent } from './search-page/search-page.component';
     HomeComponent,
     ErrorComponent,
     SliderComponent,
-    SearchPageComponent
+    SearchPageComponent,
+    PlaylistpageComponent,
+    AddplaylistComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule, ReactiveFormsModule
+
     ],
   providers: [],
   bootstrap: [AppComponent]

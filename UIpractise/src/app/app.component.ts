@@ -8,6 +8,7 @@ import { MessengerService } from './messenger.service';
 })
 export class AppComponent implements OnInit{
   title = 'UIpractise';
+  public addPlaylist=false
   constructor( @Optional() private getPlayListService: MyplaylistsService,
   private getmesseage:MessengerService
   ) { }
@@ -26,6 +27,7 @@ export class AppComponent implements OnInit{
     console.log(data)
     if(data['collection'].length!=0)
     {
+       
       this.lists=[...data.collection]
       this.playListCreated=true
       data.collection.forEach((element:any,index:any) => {
@@ -39,7 +41,19 @@ export class AppComponent implements OnInit{
     }
 
    })
+   this.getmesseage.addplaylistSubject.subscribe((response)=>{
+    debugger
+    if(response)
+    this.addPlaylist=true
+    else
+    this.addPlaylist=false
+   })
   }
+  showModal()
+  {
+    this.getmesseage.showPlaylistmodal()
+  }
+
 
 
 }

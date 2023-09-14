@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Optional } from '@angular/core';
 import { GethomepagetracksService } from '../gethomepagetracks.service';
+import { Router, ActivatedRoute } from '@angular/router';
 import { MessengerService } from '../messenger.service';
+import { GetaudiofileService } from '../getaudiofile.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -11,7 +13,10 @@ public list =['one','two','three','four','five','six']
 public listone=[]
 public collection=[]
   constructor(public gethomepagetracksService:GethomepagetracksService,
-    private getmesseage:MessengerService
+    private getmesseage:MessengerService,
+    private router:Router,
+    @Optional() private gettrackService: GetaudiofileService,
+
     ) { }
 
   ngOnInit(): void {
@@ -34,6 +39,24 @@ public collection=[]
   public play(item:any)
   {
     this.getmesseage.selectPlaylist(item,'play')
+  }
+  public openPlaylist(item:any)
+  {
+     
+    let data:any={}
+    if(item['kind']=="system-playlist")
+    {
+      // data['id']=(item['id'].split(':'))
+      // data['id']=data['id'][data['id'].length-1]
+      this.router.navigateByUrl(`/playlist?id=${item.id}&kind=system-playlist`, {state:item }); 
+    }
+    else{
+      this.gettrackService.getplaylist(item['id']).subscribe((data:any)=>{
+
+        this.router.navigateByUrl(`/playlist?id=${data.id}&kind=playlist`,{state:item}); 
+      })
+        }
+
   }
 
 }

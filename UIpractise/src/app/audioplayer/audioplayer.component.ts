@@ -66,6 +66,12 @@ public changeProgressbar()
   this.centerProgressBar=this.centerProgressBar+'px'
   this.marginLeft=centerThumb  
 }
+updateTrackHistory()
+{
+  this.gettrackService.updateHistory(this.tracks[this.currentSong]['urn']).subscribe((data:any)=>{
+    console.log('updated')
+  })
+}
   ngOnInit(): void {
 
     this.playlist=this.getmesseage.playlistObs
@@ -77,6 +83,7 @@ public changeProgressbar()
         this.tracks=this.tracks.slice(0,(this.currentSong+1))
         this.gettrackService.stop();
         this.reset()
+         
         if(response['kind']=="system-playlist")
         {
           response['tracks'].forEach((element:any)=>{
@@ -84,6 +91,7 @@ public changeProgressbar()
           })
           this.currentSong++;
           this.playTrack(this.tracks[this.currentSong]['id'])
+          this.updateTrackHistory()
 
         }
         else if(response['kind']=="playlist")
@@ -94,6 +102,8 @@ public changeProgressbar()
             })
             this.currentSong++;
             this.playTrack(this.tracks[this.currentSong]['id'])
+            this.updateTrackHistory()
+
 
            })
         }
@@ -102,6 +112,7 @@ public changeProgressbar()
           this.tracks.push(response)
           this.currentSong++;
           this.playTrack(this.tracks[this.currentSong]['id'])
+          this.updateTrackHistory()
         }
 
         // this.gettrackService.playStream()
@@ -171,6 +182,7 @@ public changeProgressbar()
         this.reset()
         this.currentSong++;
         this.playTrack(this.tracks[this.currentSong]['id'])
+        this.updateTrackHistory()
 
 
       })
@@ -180,6 +192,8 @@ public changeProgressbar()
       this.reset()
       this.currentSong++;
       this.playTrack(this.tracks[this.currentSong]['id'])
+      this.updateTrackHistory()
+
   
     }
 
@@ -190,6 +204,8 @@ public changeProgressbar()
     this.reset()
     this.currentSong--;
     this.playTrack(this.tracks[this.currentSong]['id'])
+    this.updateTrackHistory()
+
 
   }
   public pauseplay()

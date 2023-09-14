@@ -1,5 +1,8 @@
-import { Component, Input, OnInit, ViewChild,ElementRef, AfterViewInit, Renderer2 } from '@angular/core';
+import { Component, Input, OnInit, ViewChild,ElementRef, AfterViewInit, Renderer2,Optional } from '@angular/core';
 import { MessengerService } from '../messenger.service';
+import { Router, ActivatedRoute } from '@angular/router';
+import { GetaudiofileService } from '../getaudiofile.service';
+
 @Component({
   selector: 'app-slider',
   templateUrl: './slider.component.html',
@@ -9,7 +12,10 @@ export class SliderComponent implements OnInit,AfterViewInit {
 
   @Input() items:any={title:''}
   constructor(public renderer:Renderer2,
-    private getmesseage:MessengerService
+    private getmesseage:MessengerService,
+    private router:Router,
+    @Optional() private gettrackService: GetaudiofileService,
+
     ) { }
   public showNext=false;
   public showPrev=false;
@@ -87,5 +93,23 @@ export class SliderComponent implements OnInit,AfterViewInit {
   public play(item:any)
   {
     this.getmesseage.selectPlaylist(item,'play')
+  }
+  public openPlaylist(item:any)
+  {
+     
+    let data:any={}
+    if(item['kind']=="system-playlist")
+    {
+      // data['id']=(item['id'].split(':'))
+      // data['id']=data['id'][data['id'].length-1]
+      this.router.navigateByUrl(`/playlist?id=${item.id}&kind=system-playlist`, {state:item }); 
+    }
+    else{
+      this.gettrackService.getplaylist(item['id']).subscribe((data:any)=>{
+
+        this.router.navigateByUrl(`/playlist?id=${data.id}&kind=playlist`,{state:item}); 
+      })
+        }
+
   }
 }

@@ -5,7 +5,7 @@
         </div>
         <div class="sixcards">
           <div *ngFor="let item of list">
-            <div class="card-hover">
+            <div class="card-hover" (click)="openPlaylist(item)">
             <div class="card">
             <div class="img">
                 <img [src]="item['artwork_url']?item['artwork_url']:item['calculated_artwork_url']">

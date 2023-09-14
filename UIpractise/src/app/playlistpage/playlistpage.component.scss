@@ -1,0 +1,70 @@
+.playlistpage
+{
+    color: white;
+    overflow-y: scroll;
+    background-color: #000;
+    .banner{
+        padding-top:1.5rem ;
+        display: block;
+    }
+    .banner-content{
+        display: grid;
+        grid-template-columns: 75% 25%;
+        background: linear-gradient(90deg, rgba(122,122,131,1) 0%, rgba(97,97,107,1) 24%, rgba(48,48,51,1) 62%, rgba(41,41,45,1) 83%, rgba(42,42,43,1) 100%);
+
+        .image{
+            padding: 3%;
+            img{
+                object-fit: cover;
+                height: 100%;
+                width: 100%;       }
+        }
+        .content{
+            position: relative;
+        }
+        .text{
+            background: black;
+            width: fit-content;
+            padding: 3%;
+            font-size: 3rem;
+            position: absolute;
+            top: 13%;
+            left: 12%;
+            border-radius: 4rem;
+
+        }
+    
+    }
+    .tracks
+    { 
+        .track{
+            padding: 1%;
+
+        }
+        .songtitle{
+            display: flex;
+            flex-direction: row;
+            width: 30%;
+            margin-left: 10%;
+            justify-content: space-between;
+            svg{
+        height: 3rem;
+            }
+.title{
+    display: inline-block;
+}
+        }
+        .list{
+            padding-top: 10px;
+            display: flex;
+
+    
+        }
+
+    }
+}
+.footer
+{
+    display: block;
+    height: 20%;
+}

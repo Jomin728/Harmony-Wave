@@ -8,8 +8,12 @@ import { Observable, throwError,BehaviorSubject, Subject, observable,pipe, of} f
 export class MessengerService {
 
   private playlists:Array<any> =[]
+  private addplaylist:boolean=true
+  private selectedTrack:object={}
 
   private playlistsubject:BehaviorSubject<any>=new BehaviorSubject(this.playlists)
+  public addplaylistSubject:BehaviorSubject<any>=new BehaviorSubject(this.addplaylist)
+  public selectedTrackSubject:BehaviorSubject<any>=new BehaviorSubject(this.selectedTrack)
   public playlistObs=this.playlistsubject.asObservable();
 
   selectPlaylist(item:any,event?:any)
@@ -20,6 +24,19 @@ export class MessengerService {
     }
     item['event']=event
     this.playlistsubject.next(item)
+  }
+
+  showPlaylistmodal()
+  {
+    this.addplaylistSubject.next(true)
+  }
+  hidePlaylistmodal()
+  {
+    this.addplaylistSubject.next(false)
+  }
+  selecttrack(track:any)
+  {
+    this.selectedTrackSubject.next(track)
   }
 
   constructor() { }

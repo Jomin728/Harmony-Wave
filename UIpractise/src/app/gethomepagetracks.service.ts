@@ -22,10 +22,14 @@ export class GethomepagetracksService {
 
     const headers = new HttpHeaders()
     .set('Content-Type', 'application/json')
-    .set('Authorization','OAuth 2-294140-1293559353-qmfH32EKPE1yQ')
+    .set('Authorization','OAuth 2-294215-1285281471-6Cxq2SKO0Os26')
     .set('name','https://api-v2.soundcloud.com/mixed-selections?variant_ids=2613&client_id=iMxZgT5mfGstBj8GWJbYMvpzelS8ne0E&limit=10&offset=0&linked_partitioning=1&app_version=1693487844&app_locale=en');
 
     return this.http.get("http://localhost:3000",{'params':params,'headers': headers})
 
+  }
+  public gettracks()
+  {
+    
   }
 }

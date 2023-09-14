@@ -1,0 +1,62 @@
+<div class="addPlaylistModal">
+<div class="header">
+    <p [ngClass]="{headerselected: addPlaylist == true}" (click)="addplay()">Add to Playlist</p>
+    <p [ngClass]="{headerselected: addPlaylist != true}" (click)="addplay()">Create a Playlist</p>
+    <p (click)="close()"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <circle cx="12" cy="12" r="10" stroke="#1C274C" stroke-width="1.5"></circle> <path d="M14.5 9.50002L9.5 14.5M9.49998 9.5L14.5 14.5" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round"></path> </g></svg></p>
+</div>
+<div *ngIf="addPlaylist">
+    <div class="tracks">
+    <div class="track" *ngFor="let item of lists; index as i">
+        <div class="songtitle">
+            <div class="list">
+                <div class="title">
+                <img [src]="item['imageUrl']">
+                </div>
+                <div class="title">
+                    <p>{{item['playlist']['title']}}</p>
+                </div>
+            </div>
+
+            <div>
+                <p *ngIf="item['added'] == false" class="button" (click)="addtoPlaylist(i)">Add to Playlist</p> 
+                <p *ngIf="item['added'] == true" class="button" (click)="removeFromPlaylist(i)">Added</p>
+                <div class="card-text">
+                
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+</div>
+
+<div *ngIf="!addPlaylist">
+<form [formGroup]="playlistform" (ngSubmit)="onsubmit()">
+    <p class="playlisttitle">Playlist title *</p>
+    <div class="inputtext">
+        <input type="text" id="playlistname" name="playlistname" formControlName="playlistname">
+    </div>
+    <div class="inputtext">
+        <button type="submit" [disabled]="!playlistform.valid">Add Playlist</button>
+    </div>
+</form>
+<!-- <div class="tracks">
+    <div class="track" *ngFor="let item of selectedTrack">
+        <div class="songtitle">
+            <div class="list">
+                <div class="title">
+                <img [src]="item['imageUrl']">
+                </div>
+                <div class="title">
+                    <p>{{item['playlist']['title']}}</p>
+                </div>
+            </div>
+
+            <div>
+                <svg (click)="addplaylist(item);$event.stopPropagation()" viewBox="-2.4 -2.4 28.80 28.80" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"><rect x="-2.4" y="-2.4" width="28.80" height="28.80" rx="14.4" fill="#ebeef0" strokewidth="0"></rect></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22ZM10.6935 15.8458L15.4137 13.059C16.1954 12.5974 16.1954 11.4026 15.4137 10.941L10.6935 8.15419C9.93371 7.70561 9 8.28947 9 9.21316V14.7868C9 15.7105 9.93371 16.2944 10.6935 15.8458Z" fill="#1C274C"></path> </g></svg>  <div class="card-text">
+            </div>
+        </div>
+    </div>
+    </div>
+</div> -->
+</div>
+</div>
