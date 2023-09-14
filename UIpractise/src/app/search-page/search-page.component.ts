@@ -69,5 +69,10 @@ export class SearchPageComponent implements OnInit {
   {
      
   }
+  public addtoplaylist(item:any)
+  {
+    this.getmesseage.selecttrack(item)
+    this.getmesseage.showPlaylistmodal()
+  }
 
 }

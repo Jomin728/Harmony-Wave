@@ -49,7 +49,7 @@
         .songtitle {
                        display: flex;
                         flex-direction: row;
-                        width: 50%;
+                        width: 80%;
                         margin-left: 10%;
                         justify-content: space-between;
                         align-items: center;
@@ -63,21 +63,21 @@
         
                         .title {
                             display: inline-block;
-                            padding-left: 16%;
 
                         }
                         .button{
                             cursor: pointer;
                             padding: 1px;
                             border: 1px solid orange;
+                            width: 130%;
+
                         }
                     }
      
         
                     .list {
                         display: flex;
-        
-        
+                        width: 100%;
                     }
                 
         

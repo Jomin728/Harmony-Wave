@@ -86,6 +86,13 @@
                 font-weight: 200;
                 font-size: 0.8rem;
             }
+            .add{
+                position: absolute;
+                height: 3rem;
+                right: 0%;
+                bottom: 0%;
+                opacity: 0;
+            }
         }
         .cards:hover{
             background-color: #242424;

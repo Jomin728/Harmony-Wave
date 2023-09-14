@@ -30,7 +30,9 @@ export class PlaylistpageComponent implements OnInit {
    this.activatedRoute.queryParams.subscribe((param)=>{
     this.kind=param['kind']
     this.id=param['id']
-     
+    this.tracks=this.location.getState();
+    this.trackslist=this.tracks['tracks']?this.tracks['tracks']:[]
+
     this.initialdata()
    })
   }
@@ -40,6 +42,7 @@ export class PlaylistpageComponent implements OnInit {
   }
   public initialdata()
   {
+    debugger
      
     if(this.trackslist.length==0)
     {
@@ -47,6 +50,8 @@ export class PlaylistpageComponent implements OnInit {
       {
         this.gettrackService.getplaylist(this.id).subscribe((reponse:any)=>{
           this.tracks=reponse
+          if(this.tracks['artwork_url'] === null)
+          this.tracks['artwork_url']=this.tracks['tracks'][0]['artwork_url']
           this.gettrackService.gettracksData(reponse['tracks']).subscribe((response:any)=>{
             this.trackslist=response;
             
@@ -71,6 +76,11 @@ export class PlaylistpageComponent implements OnInit {
         
       })
     }
+  }
+  public addtoplaylist(item:any)
+  {
+    this.getmesseage.selecttrack(item)
+    this.getmesseage.showPlaylistmodal()
   }
 
 }

@@ -83,7 +83,7 @@
             </div>
             <div class="listplaylist" >
                 <ng-container  *ngFor="let item of lists">
-                    <app-playlist  [title]="item['playlist']['title']" [imageUrl]="item['imageUrl']" ></app-playlist>
+                    <app-playlist [item]="item"  [title]="item['playlist']['title']" [imageUrl]="item['imageUrl']" ></app-playlist>
                 </ng-container>
             </div>
         </div>

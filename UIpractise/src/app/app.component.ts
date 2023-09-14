@@ -42,7 +42,7 @@ export class AppComponent implements OnInit{
 
    })
    this.getmesseage.addplaylistSubject.subscribe((response)=>{
-    debugger
+     
     if(response)
     this.addPlaylist=true
     else

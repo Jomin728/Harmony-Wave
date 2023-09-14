@@ -27,6 +27,8 @@ export class AddplaylistComponent implements OnInit {
           this.lists[index]['imageUrl']=response['tracks'][0]['artwork_url']
           this.lists[index]['genre']=response['tracks'][0]['genre']
           this.lists[index]['added']=false
+          this.lists[index]['tracklist']=response['tracks']
+          debugger
         })
       });
       
@@ -34,19 +36,25 @@ export class AddplaylistComponent implements OnInit {
     this.playlistform=this.formBuilder.group({
       playlistname:["",[Validators.required]]
     })
-    this.messageservice.selectedTrackSubject.subscribe((data:any)=>{
-      this.selectedTrack=[]
-      this.selectedTrack.push(data)
-    })
-    
+    this.selectedTrack=[]
+    this.selectedTrack.push(this.messageservice.selectedTrack)
+    debugger
+  }
+  show()
+  {
+    this.messageservice.showPlaylistmodal()
   }
   close()
   {
     this.messageservice.hidePlaylistmodal()
-    debugger
+     
   }
   onsubmit()
   {
+    this.getPlayListService.createPlaylists(this.selectedTrack[0],this.playlistform.value.playlistname).subscribe((response)=>{
+
+    })
+    this.close()
     console.log(this.playlistform.valid)
   }
   addplay()
@@ -55,12 +63,15 @@ export class AddplaylistComponent implements OnInit {
   }
   addtoPlaylist(i:any)
   {
-    debugger
+     
     this.lists[i]['added']=true
+    this.getPlayListService.updatePlaylist(this.lists[i],this.selectedTrack[0]).subscribe((resp)=>{
+
+    })
   }
   removeFromPlaylist(i:any)
   {
-    debugger
+     
     this.lists[i]['added']=false
   }
 

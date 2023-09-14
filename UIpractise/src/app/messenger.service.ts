@@ -8,8 +8,8 @@ import { Observable, throwError,BehaviorSubject, Subject, observable,pipe, of} f
 export class MessengerService {
 
   private playlists:Array<any> =[]
-  private addplaylist:boolean=true
-  private selectedTrack:object={}
+  private addplaylist:boolean=false
+  public selectedTrack:any={}
 
   private playlistsubject:BehaviorSubject<any>=new BehaviorSubject(this.playlists)
   public addplaylistSubject:BehaviorSubject<any>=new BehaviorSubject(this.addplaylist)
@@ -36,7 +36,9 @@ export class MessengerService {
   }
   selecttrack(track:any)
   {
+     
     this.selectedTrackSubject.next(track)
+    this.selectedTrack=track
   }
 
   constructor() { }
