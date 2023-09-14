@@ -52,7 +52,7 @@ export class GetaudiofileService {
     .set('Authorization','OAuth 2-294215-1285281471-6Cxq2SKO0Os26')
     .set('name','https://api-v2.soundcloud.com/tracks/'+num+'?app_locale=en');
 
-   return this.http.get("http://localhost:3000",{'params':params,'headers': headers})
+   return this.http.get("https://proxy-server-sgv4.onrender.com",{'params':params,'headers': headers})
 
    }
    getplaylist(id:any)
@@ -68,7 +68,7 @@ export class GetaudiofileService {
     .set('Content-Type', 'application/json')
     .set('name','https://api-v2.soundcloud.com/playlists/'+id+'?representation=full&client_id=iMxZgT5mfGstBj8GWJbYMvpzelS8ne0E&app_version=1693487844&app_locale=en');
 
-   return this.http.get("http://localhost:3000",{'params':params,'headers': headers})
+   return this.http.get("https://proxy-server-sgv4.onrender.com",{'params':params,'headers': headers})
    }
    getSystemPlaylist(id:any)
    {
@@ -82,7 +82,7 @@ export class GetaudiofileService {
     .set('Content-Type', 'application/json')
     .set('Authorization','OAuth 2-294215-1285281471-6Cxq2SKO0Os26')
     .set('name','https://api-v2.soundcloud.com/system-playlists/'+id+'?client_id=23hBoEAIwL826D6QD5tg7q8dC52udr4X&app_version=1694422069&app_locale=en');
-    return this.http.get("http://localhost:3000",{'params':params,'headers': headers})
+    return this.http.get("https://proxy-server-sgv4.onrender.com",{'params':params,'headers': headers})
    }
    gettracksData(tracks:any)
    {
@@ -108,7 +108,7 @@ export class GetaudiofileService {
     const headers = new HttpHeaders()
     .set('Content-Type', 'application/json')
     .set('name','https://api-v2.soundcloud.com/tracks?ids='+id+'&client_id=23hBoEAIwL826D6QD5tg7q8dC52udr4X&app_version=1694422069&app_locale=en');
-    return this.http.get("http://localhost:3000",{'params':params,'headers': headers})
+    return this.http.get("https://proxy-server-sgv4.onrender.com",{'params':params,'headers': headers})
 
 
    }
@@ -128,7 +128,7 @@ export class GetaudiofileService {
     .set('Authorization','OAuth 2-294215-1285281471-6Cxq2SKO0Os26')
     .set('name','https://api-v2.soundcloud.com/me/play-history/tracks?client_id=iMxZgT5mfGstBj8GWJbYMvpzelS8ne0E&limit=25&offset=0&linked_partitioning=1&app_version=1693487844&app_locale=en');
 
-   return this.http.get("http://localhost:3000",{'params':params,'headers': headers})
+   return this.http.get("https://proxy-server-sgv4.onrender.com",{'params':params,'headers': headers})
 
    }
    getRelatedTracks(id:any)
@@ -147,7 +147,7 @@ export class GetaudiofileService {
     .set('Content-Type', 'application/json')
     .set('name','https://api-v2.soundcloud.com/tracks/'+id+'/related?user_id=1293559353&client_id=iMxZgT5mfGstBj8GWJbYMvpzelS8ne0E&limit=50&offset=0&linked_partitioning=1&app_version=1693487844&app_locale=en');
 
-   return this.http.get("http://localhost:3000",{'params':params,'headers': headers})
+   return this.http.get("https://proxy-server-sgv4.onrender.com",{'params':params,'headers': headers})
 
    }
    searchQuery(value:any)
@@ -170,7 +170,7 @@ export class GetaudiofileService {
     .set('Content-Type', 'application/json')
     .set('name','https://api-v2.soundcloud.com/search?q='+value+'&sc_a_id=1b6c568849aee08069da9052bf9c38c5a639b68a&variant_ids=2613&facet=model&user_id=98935-469044-563047-744277&client_id=iMxZgT5mfGstBj8GWJbYMvpzelS8ne0E&limit=20&offset=0&linked_partitioning=1&app_version=1');
 
-   return this.http.get("http://localhost:3000",{'params':params,'headers': headers})
+   return this.http.get("https://proxy-server-sgv4.onrender.com",{'params':params,'headers': headers})
 
    }
    gethls(id:string,url:string)
@@ -184,7 +184,7 @@ export class GetaudiofileService {
     .set('Authorization','OAuth 2-294215-1285281471-6Cxq2SKO0Os26')
     .set('name',url+'?app_locale=en');
 
-   return this.http.get("http://localhost:3000",{'params':params,'headers': headers})
+   return this.http.get("https://proxy-server-sgv4.onrender.com",{'params':params,'headers': headers})
    }
    updateHistory(urn:any)
    {
@@ -199,7 +199,7 @@ export class GetaudiofileService {
     .set('Authorization','OAuth 2-294215-1285281471-6Cxq2SKO0Os26')
     .set('name','https://api-v2.soundcloud.com/me/play-history?client_id=iMxZgT5mfGstBj8GWJbYMvpzelS8ne0E&app_version=1693487844&app_locale=en');
 
-   return this.http.post("http://localhost:3000",{track_urn:urn},{'params':params,'headers': headers})
+   return this.http.post("https://proxy-server-sgv4.onrender.com",{track_urn:urn},{'params':params,'headers': headers})
 
    }
    private resetState() {

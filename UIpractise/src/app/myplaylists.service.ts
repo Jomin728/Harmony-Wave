@@ -25,7 +25,7 @@ export class MyplaylistsService {
     .set('Authorization','OAuth 2-294215-1285281471-6Cxq2SKO0Os26')
     .set('name','https://api-v2.soundcloud.com/me/library/all?limit=10&offset=0&linked_partitioning=1&app_version=1692695220&app_locale=en');
 
-   return this.http.get("http://localhost:3000",{'params':params,'headers': headers})
+   return this.http.get("https://proxy-server-sgv4.onrender.com",{'params':params,'headers': headers})
   }
   getplayListTracks(id:string)
   {
@@ -38,7 +38,7 @@ export class MyplaylistsService {
     .set('Content-Type', 'application/json')
     .set('Authorization','OAuth 2-294215-1285281471-6Cxq2SKO0Os26')
     .set('name','https://api-v2.soundcloud.com/playlists/'+id+'?representation=full&&app_version=1692695220&app_locale=en');
-    return this.http.get("http://localhost:3000",{'params':params,'headers': headers})
+    return this.http.get("https://proxy-server-sgv4.onrender.com",{'params':params,'headers': headers})
 
   }
   public createPlaylists(item:any,value:any)
@@ -57,7 +57,7 @@ export class MyplaylistsService {
     .set('Content-Type', 'application/json')
     .set('Authorization','OAuth 2-294215-1285281471-6Cxq2SKO0Os26')
     .set('name','https://api-v2.soundcloud.com/playlists?client_id=0nr4Ys43jAqfn0VkGXfxTWh9d4NB0o54&app_version=1694501791&app_locale=en');
-    return this.http.post("http://localhost:3000",body,{'params':params,'headers': headers})
+    return this.http.post("https://proxy-server-sgv4.onrender.com",body,{'params':params,'headers': headers})
 
   }
   public updatePlaylist(playlist:any,item:any)
@@ -83,7 +83,7 @@ export class MyplaylistsService {
     .set('Content-Type', 'application/json')
     .set('Authorization','OAuth 2-294215-1285281471-6Cxq2SKO0Os26')
     .set('name','https://api-v2.soundcloud.com/playlists/'+playlist['playlist']['id']+'?client_id=0nr4Ys43jAqfn0VkGXfxTWh9d4NB0o54&app_version=1694501791&app_locale=en');
-    return this.http.put("http://localhost:3000",body,{'params':params,'headers': headers})
+    return this.http.put("https://proxy-server-sgv4.onrender.com",body,{'params':params,'headers': headers})
 
   }
   public removeFromPlaylist()
