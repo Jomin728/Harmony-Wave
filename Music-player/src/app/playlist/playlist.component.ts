@@ -22,7 +22,7 @@ export class PlaylistComponent implements OnInit {
   }
   public openPlaylist(item:any)
   {
-    debugger
+     
     item=item['playlist']
      
     let data:any={}

@@ -62,7 +62,7 @@ export class MyplaylistsService {
   }
   public updatePlaylist(playlist:any,item:any)
   {
-    debugger
+     
     const params = new HttpParams()
     .set('client_id',"0nr4Ys43jAqfn0VkGXfxTWh9d4NB0o54")
     .set('app_version','1694501791')

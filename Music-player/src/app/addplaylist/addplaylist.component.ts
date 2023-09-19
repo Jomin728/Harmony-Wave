@@ -28,7 +28,7 @@ export class AddplaylistComponent implements OnInit {
           this.lists[index]['genre']=response['tracks'][0]['genre']
           this.lists[index]['added']=false
           this.lists[index]['tracklist']=response['tracks']
-          debugger
+           
         })
       });
       
@@ -38,7 +38,7 @@ export class AddplaylistComponent implements OnInit {
     })
     this.selectedTrack=[]
     this.selectedTrack.push(this.messageservice.selectedTrack)
-    debugger
+     
   }
   show()
   {
