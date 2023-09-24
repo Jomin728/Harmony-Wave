@@ -8,6 +8,7 @@
     font-size: 13px;
     margin-top: 5px;
     transform:translateX(-50%);
+    z-index: 9999999;
     &::before {
         content: '';
         width: 0;

@@ -42,7 +42,7 @@ export class PlaylistpageComponent implements OnInit {
   }
   public initialdata()
   {
-     
+    debugger
      
     if(this.trackslist.length==0)
     {
