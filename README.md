@@ -1,5 +1,5 @@
 # Harmony-Wave
-Hosted at http://ec2-54-87-223-14.compute-1.amazonaws.com/home
+Hosted at (http://ec2-43-205-231-191.ap-south-1.compute.amazonaws.com:4200/home)
 
 Frontend clone of SoundCloud using Angular
 
